@@ -1,26 +1,28 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {getAllPosts} from './data/loaders.js'
+
+import {handlePostAction, createPost } from './data/actions.js'
 
 import { RootLayout } from "@/layout";
-import { ErrorPage, Home, Detail} from "@/pages";
+import { ErrorPage, Posts, Post } from "@/pages";
 
 export default function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <RootLayout />,
+      loader:getAllPosts,
       children: [
         {
           index: true,
-          element: <Home />,
+          element: <Posts />,
+          action:createPost 
         },
         {
-          path: "home",
-          element: <Home />,
+          path: "/posts/:id",
+          element: <Post />,
+          action: handlePostAction,
         },
-        {
-          path: "home/:id",
-          element: <Detail />,
-        }
       ],
       errorElement: <ErrorPage />,
     },

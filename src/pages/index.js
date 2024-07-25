@@ -1,5 +1,5 @@
 import ErrorPage from "./ErrorPage";
-import Home from "./Home";
-import Detail from "./Detail";
+import Posts from "./Posts";
+import Post from "./Post";
 
-export { ErrorPage, Home, Detail};
+export { ErrorPage, Posts, Post };
