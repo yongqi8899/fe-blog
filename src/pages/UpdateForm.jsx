@@ -20,7 +20,6 @@ export default function UpdateForm() {
             type="text"
             name="title"
             className="grow"
-            placeholder="Please write your title here"
             defaultValue={post.title}
           />
         </label>
@@ -30,7 +29,6 @@ export default function UpdateForm() {
             type="text"
             name="author"
             className="grow"
-            placeholder="Please write author here"
             defaultValue={post.author}
           />
         </label>
@@ -40,8 +38,18 @@ export default function UpdateForm() {
             type="text"
             name="content"
             className="grow"
-            placeholder="Please write content here"
             defaultValue={post.content}
+          />
+        </label>
+        <label className='field'>
+          Content
+          <textarea
+            type="text"
+            name="content"
+            cols="40"
+            rows="10"
+            defaultValue={post.content}
+            required
           />
         </label>
         <label className="input input-bordered flex items-center gap-2">
@@ -50,7 +58,6 @@ export default function UpdateForm() {
             type="url"
             name="cover"
             className="grow"
-            placeholder="Please write cover url here"
             defaultValue={post.cover}
           />
         </label>
