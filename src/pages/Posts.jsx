@@ -2,7 +2,9 @@ import { useOutletContext, Link } from "react-router-dom";
 
 export default function Posts() {
   const posts = useOutletContext();
-  console.log("posts", posts);
+  const handleImageError = (event) => {
+    event.target.src = "https://placehold.co/600x400?text=Kein+Bild+vorhanden";
+  };
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {posts &&
@@ -12,7 +14,7 @@ export default function Posts() {
             key={post.id}
           >
             <div className="card-body">
-              {<img src={post.cover} alt={post.title}></img>}
+              {<img src={post.cover} alt={post.title} onError={handleImageError}></img>}
               <h2 className="card-title">{post.title}</h2>
               <p>{post.author}</p>
               <p>{post.create_at.split("T")[0]}</p>

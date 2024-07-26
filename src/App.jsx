@@ -1,10 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {getAllPosts} from './data/loaders.js'
 
-import {handlePostAction, createPost } from './data/actions.js'
+import {createPost, updatePost, deletePost } from './data/actions.js'
 
 import { RootLayout } from "@/layout";
-import { ErrorPage, Posts, Post } from "@/pages";
+import { ErrorPage, Posts, Post, CreateForm, DeleteForm, UpdateForm } from "@/pages";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -16,12 +16,25 @@ export default function App() {
         {
           index: true,
           element: <Posts />,
-          action:createPost 
         },
         {
           path: "/posts/:id",
           element: <Post />,
-          action: handlePostAction,
+        },
+        {
+          path: "/posts/:id/update",
+          element: <UpdateForm />,
+          action: updatePost,
+        },
+        {
+          path: "/posts/create",
+          element: <CreateForm />,
+          action: createPost,
+        },
+        {
+          path: "/posts/:id/delete",
+          element: <DeleteForm />,
+          action: deletePost,
         },
       ],
       errorElement: <ErrorPage />,

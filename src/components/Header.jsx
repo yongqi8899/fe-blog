@@ -1,24 +1,20 @@
-import { NavLink} from "react-router-dom";
-import CreateForm from "@/components/CreateForm.jsx";
-import {useState} from 'react'
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
-  const [showCreateForm, setShowCreateForm] = useState(false);
-  const handleCreate = () => {
-    setShowCreateForm(true)
-  };
+  const handleCreate = () => {};
 
   return (
-    <header className="sticky top-0 z-50 text-gray-700 align-middle bg-white navbar bold">
-      <div className="flex-1">
+    <header className="sticky top-0 z-50 text-gray-700 align-middle bg-white navbar bold flex justify-between">
+      <div className="flex">
         <NavLink to="/" className="text-xl btn btn-ghost">
           Blog
         </NavLink>
-        <button className="btn" onClick={handleCreate}>
-        +
-      </button>
       </div>
-      {showCreateForm && <CreateForm />}
+      <div>
+        <NavLink to="/posts/create" className="text-xl btn btn-ghost">
+          +
+        </NavLink>
+      </div>
     </header>
   );
 }
