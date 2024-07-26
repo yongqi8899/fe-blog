@@ -33,12 +33,12 @@ export default function UpdateForm() {
           />
         </label>
         <label className="input input-bordered flex items-center gap-2">
-          Content
+          Cover
           <input
-            type="text"
-            name="content"
+            type="url"
+            name="cover"
             className="grow"
-            defaultValue={post.content}
+            defaultValue={post.cover}
           />
         </label>
         <label className='field'>
