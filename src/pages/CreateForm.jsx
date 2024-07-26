@@ -3,7 +3,7 @@ import { Form, useNavigate } from "react-router-dom";
 export default function CreateForm() {
   const navigate = useNavigate();
   return (
-    <Form method="POST" action="/">
+    <Form method="POST" >
       <div className="card-body w-96 m-auto">
         <h2 className="text-xl m-auto bold">Create</h2>
         <label className="input input-bordered flex items-center gap-2">
