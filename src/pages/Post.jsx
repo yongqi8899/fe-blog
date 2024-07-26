@@ -22,8 +22,8 @@ export default function Post() {
     <div>
       {post && (
         <>
-          <div className="hero bg-base-200 min-h-screen">
-            <div className="hero-content flex-col lg:flex-row-reverse">
+          <div className="min-h-screen hero bg-base-200">
+            <div className="flex-col hero-content lg:flex-row-reverse">
               <img
                 src={post.cover}
                 alt={post.title}
@@ -31,13 +31,13 @@ export default function Post() {
                 className="max-w-sm rounded-lg shadow-2xl"
               />
               <div>
-                <h1 className="text-5xl font-bold mb-6">{post.title}</h1>
+                <h1 className="mb-6 text-5xl font-bold">{post.title}</h1>
                 <div className="flex justify-between">
                   <p>{post.author}</p>
                   <p>{post.create_at.split("T")[0]}</p>
                 </div>
                 <p className="py-6">{post.content}</p>
-                <div className="flex justify-end gap-6 w-full">
+                <div className="flex justify-end w-full gap-6">
                   <button className="btn" onClick={handleUpdate}>update</button>
                   <button className="btn" onClick={handleDelete}>delete</button>
                 </div>

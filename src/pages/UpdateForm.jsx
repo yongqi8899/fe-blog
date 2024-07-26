@@ -12,9 +12,9 @@ export default function UpdateForm() {
   const post = posts.find((post) => post.id === +id);
   return (
     <Form method="POST">
-      <div className="card-body w-96 m-auto">
-        <h2 className="text-xl m-auto bold">Update</h2>
-        <label className="input input-bordered flex items-center gap-2">
+      <div className="m-auto card-body w-96">
+        <h2 className="m-auto text-xl bold">Update</h2>
+        <label className="flex items-center gap-2 input input-bordered">
           Title
           <input
             type="text"
@@ -23,7 +23,7 @@ export default function UpdateForm() {
             defaultValue={post.title}
           />
         </label>
-        <label className="input input-bordered flex items-center gap-2">
+        <label className="flex items-center gap-2 input input-bordered">
           Author
           <input
             type="text"
@@ -32,7 +32,7 @@ export default function UpdateForm() {
             defaultValue={post.author}
           />
         </label>
-        <label className="input input-bordered flex items-center gap-2">
+        <label className="flex items-center gap-2 input input-bordered">
           Cover
           <input
             type="url"
@@ -52,20 +52,11 @@ export default function UpdateForm() {
             required
           />
         </label>
-        <label className="input input-bordered flex items-center gap-2">
-          Cover
-          <input
-            type="url"
-            name="cover"
-            className="grow"
-            defaultValue={post.cover}
-          />
-        </label>
-        <div className="card-actions justify-end">
+        <div className="justify-end card-actions">
           <button className="btn" onClick={() => navigate(-1)}>
             Cancel
           </button>
-          <button className="btn bg-green-500 hover:bg-green-600">
+          <button className="bg-green-500 btn hover:bg-green-600">
             Update
           </button>
         </div>
