@@ -1,8 +1,6 @@
 import { NavLink } from "react-router-dom";
 
 export default function Header() {
-  const handleCreate = () => {};
-
   return (
     <header className="sticky top-0 z-50 text-gray-700 align-middle bg-white navbar bold flex justify-between">
       <div className="flex">

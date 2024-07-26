@@ -33,7 +33,6 @@ export const deletePost = async ({ params }) => {
       "Content-Type": "application/json",
     },
   });
-  
   return redirect("/");
 };
 

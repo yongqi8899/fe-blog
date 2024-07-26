@@ -4,5 +4,3 @@ export const getAllPosts = async () => {
   const data = await res.json();
   return data;
 };
-
-export const getOnePost = async ({ params }) => {};
