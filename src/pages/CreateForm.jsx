@@ -13,6 +13,7 @@ export default function CreateForm() {
             name="title"
             className="grow"
             placeholder="Please write your title here"
+            required
           />
         </label>
         <label className="input input-bordered flex items-center gap-2">
@@ -22,6 +23,7 @@ export default function CreateForm() {
             name="author"
             className="grow"
             placeholder="Please write author here"
+            required
           />
         </label>
         <label className="input input-bordered flex items-center gap-2">
@@ -31,6 +33,7 @@ export default function CreateForm() {
             name="content"
             className="grow"
             placeholder="Please write content here"
+            required
           />
         </label>
         <label className="input input-bordered flex items-center gap-2">
@@ -40,6 +43,7 @@ export default function CreateForm() {
             name="cover"
             className="grow"
             placeholder="Please write cover url here"
+            required
           />
         </label>
         <div className="card-actions justify-end">

@@ -1,17 +1,24 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import {getAllPosts} from './data/loaders.js'
+import { getAllPosts } from "./data/loaders.js";
 
-import {createPost, updatePost, deletePost } from './data/actions.js'
+import { createPost, updatePost, deletePost } from "./data/actions.js";
 
 import { RootLayout } from "@/layout";
-import { ErrorPage, Posts, Post, CreateForm, DeleteForm, UpdateForm } from "@/pages";
+import {
+  ErrorPage,
+  Posts,
+  Post,
+  CreateForm,
+  DeleteForm,
+  UpdateForm,
+} from "@/pages";
 
 export default function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <RootLayout />,
-      loader:getAllPosts,
+      loader: getAllPosts,
       children: [
         {
           index: true,
@@ -25,6 +32,7 @@ export default function App() {
           path: "/posts/:id/update",
           element: <UpdateForm />,
           action: updatePost,
+          // loader: getOnePost,
         },
         {
           path: "/posts/create",

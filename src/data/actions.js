@@ -1,43 +1,40 @@
+import { redirect } from "react-router-dom";
+
 export const createPost = async ({ request }) => {
   const formData = Object.fromEntries(await request.formData());
-  const res = await fetch(`http://localhost:8000/posts`, {
+  await fetch(`${import.meta.env.VITE_BASE_URL}/posts`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
     },
     body: JSON.stringify(formData),
   });
-  if (res.status !== 200) throw Error("something went wrong");
-  const data = await res.json();
-  return data;
+ return redirect("/");
 };
 
 export const updatePost = async ({ params, request }) => {
   const id = params.id;
   const formData = Object.fromEntries(await request.formData());
-  const res = await fetch(`http://localhost:8000/${id}`, {
-    method: request.method,
+  await fetch(`${import.meta.env.VITE_BASE_URL}/posts/${id}`, {
+    method: "PUT",
     headers: {
       "content-type": "application/json",
     },
     body: JSON.stringify(formData),
   });
-  if (res.status !== 200) throw Error("something went wrong");
-  const data = await res.json();
-  return data;
+  return redirect(`/posts/${id}`);
 };
 
 export const deletePost = async ({ params }) => {
   const id = params.id;
-  const res = await fetch(`http://localhost:8000/posts/${id}`, {
+  await fetch(`${import.meta.env.VITE_BASE_URL}/posts/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
   });
-  if (res.status !== 200) throw Error("something went wrong");
-  const data = await res.json();
-  return data;
+  
+  return redirect("/");
 };
 
 export const handlePostAction = async ({ params, request }) => {

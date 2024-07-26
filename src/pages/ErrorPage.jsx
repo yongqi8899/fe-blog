@@ -13,7 +13,7 @@ const ErrorPage = () => {
       </div>
       <button
         className="flex btn w-30 bg-red-300 hover:bg-red-400 m-auto"
-        onClick={() => navigate(-1)}
+        onClick={() => navigate("/")}
       >
         Go back
       </button>
