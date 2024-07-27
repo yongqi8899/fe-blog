@@ -1,4 +1,6 @@
 import { useOutletContext, useParams, useNavigate } from "react-router-dom";
+import ImgCard from "@/components/ImgCard";
+
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 export default function Post() {
@@ -14,22 +16,13 @@ export default function Post() {
     navigate(`/posts/${id}/update`);
   }
 
-  const handleImageError = (event) => {
-    event.target.src = "https://placehold.co/600x400?text=Kein+Bild+vorhanden";
-  };
-
   return (
     <div>
       {post && (
         <>
           <div className="min-h-screen hero bg-base-200">
             <div className="flex-col hero-content lg:flex-row-reverse">
-              <img
-                src={post.cover}
-                alt={post.title}
-                onError={handleImageError}
-                className="max-w-sm rounded-lg shadow-2xl"
-              />
+              <ImgCard src={post.cover} alt={post.title} title={post.title} />  
               <div>
                 <h1 className="mb-6 text-5xl font-bold">{post.title}</h1>
                 <div className="flex justify-between">
@@ -40,6 +33,7 @@ export default function Post() {
                 <div className="flex justify-end w-full gap-6">
                   <button className="btn" onClick={handleUpdate}>update</button>
                   <button className="btn" onClick={handleDelete}>delete</button>
+                  <button className="btn" onClick={()=>navigate("/")}>back</button>
                 </div>
               </div>
             </div>

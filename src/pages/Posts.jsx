@@ -6,7 +6,7 @@ export default function Posts() {
     event.target.src = "https://placehold.co/600x400?text=Kein+Bild+vorhanden";
   };
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-6">
       {posts &&
         posts.map((post) => (
           <div
@@ -14,13 +14,22 @@ export default function Posts() {
             key={post.id}
           >
             <div className="card-body">
-              {<img src={post.cover} alt={post.title} onError={handleImageError}></img>}
+              <div className="relative w-full overflow-hidden h-80">
+                {
+                  <img
+                    src={post.cover}
+                    alt={post.title}
+                    onError={handleImageError}
+                    className="absolute inset-0 object-cover w-full h-full"
+                  ></img>
+                }
+              </div>
               <h2 className="card-title">{post.title}</h2>
               <p>{post.author}</p>
               <p>{post.create_at.split("T")[0]}</p>
 
               <Link key={post.id} to={`/posts/${post.id}`} className="btn">
-                  detail
+                detail
               </Link>
             </div>
           </div>
