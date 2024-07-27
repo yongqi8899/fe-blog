@@ -6,7 +6,7 @@ export default function Posts() {
     event.target.src = "https://placehold.co/600x400?text=Kein+Bild+vorhanden";
   };
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
       {posts &&
         posts.map((post) => (
           <div
