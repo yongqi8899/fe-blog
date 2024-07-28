@@ -1,12 +1,18 @@
-import { useOutletContext, Link } from "react-router-dom";
+import {
+  useOutletContext,
+  useNavigate,
+} from "react-router-dom";
 
+import ImgCard from "@/components/ImgCard";
 export default function Posts() {
   const posts = useOutletContext();
+  const navigate = useNavigate();
   const handleImageError = (event) => {
     event.target.src = "https://placehold.co/600x400?text=Kein+Bild+vorhanden";
   };
+
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-6">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
       {posts &&
         posts.map((post) => (
           <div
@@ -14,23 +20,31 @@ export default function Posts() {
             key={post.id}
           >
             <div className="card-body">
-              <div className="relative w-full overflow-hidden h-80">
-                {
-                  <img
-                    src={post.cover}
-                    alt={post.title}
-                    onError={handleImageError}
-                    className="absolute inset-0 object-cover w-full h-full"
-                  ></img>
-                }
-              </div>
+              <ImgCard src={post.cover} alt={post.title}/>  
               <h2 className="card-title">{post.title}</h2>
               <p>{post.author}</p>
               <p>{post.create_at.split("T")[0]}</p>
 
-              <Link key={post.id} to={`/posts/${post.id}`} className="btn">
-                detail
-              </Link>
+              <div className="flex gap-2 flex-wrap">
+                <button
+                  className="btn"
+                  onClick={() => navigate(`/posts/${post.id}/update`)}
+                >
+                  update
+                </button>
+                <button
+                  className="btn"
+                  onClick={() => navigate(`/posts/${post.id}/delete`)}
+                >
+                  delete
+                </button>
+                <button
+                  className="btn"
+                  onClick={() => navigate(`/posts/${post.id}`)}
+                >
+                  detail
+                </button>
+              </div>
             </div>
           </div>
         ))}

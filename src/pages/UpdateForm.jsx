@@ -1,18 +1,22 @@
 import {
   Form,
   useNavigate,
+  useNavigation,
   useParams,
   useOutletContext
 } from "react-router-dom";
 
 export default function UpdateForm() {
   const navigate = useNavigate();
+  const navigation = useNavigation();
+  const busy = navigation.state === "submitting";
   const { id } = useParams();
   const posts = useOutletContext();
   const post = posts.find((post) => post.id === +id);
   return (
     <Form method="POST">
       <div className="m-auto card-body w-96">
+      <fieldset disabled={busy}>
         <h2 className="m-auto text-xl bold">Update</h2>
         <label className="flex items-center gap-2 input input-bordered">
           Title
@@ -52,12 +56,13 @@ export default function UpdateForm() {
             required
           />
         </label>
+        </fieldset>
         <div className="justify-end card-actions">
           <button className="btn" onClick={() => navigate(-1)}>
             Cancel
           </button>
           <button className="bg-green-500 btn hover:bg-green-600">
-            Update
+            { busy ? "Updating" : "Update"}
           </button>
         </div>
       </div>
