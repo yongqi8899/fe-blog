@@ -7,9 +7,6 @@ import ImgCard from "@/components/ImgCard";
 export default function Posts() {
   const posts = useOutletContext();
   const navigate = useNavigate();
-  const handleImageError = (event) => {
-    event.target.src = "https://placehold.co/600x400?text=Kein+Bild+vorhanden";
-  };
 
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
