@@ -1,7 +1,7 @@
 import { redirect } from "react-router-dom";
 import {toast} from 'react-toastify';
 
-export const createPost = async ({ request }) => {
+export const createPost = async ({ request, res }) => {
   const formData = Object.fromEntries(await request.formData());
   await fetch(`${import.meta.env.VITE_BASE_URL}/posts`, {
     method: "POST",
@@ -10,6 +10,7 @@ export const createPost = async ({ request }) => {
     },
     body: JSON.stringify(formData),
   });
+  console.log(res);
  return redirect("/");
 };
 
