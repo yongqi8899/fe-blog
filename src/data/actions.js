@@ -44,26 +44,3 @@ export const deletePost = async ({ params }) => {
   }
   return redirect("/");
 };
-
-export const handlePostAction = async ({ params, request }) => {
-  const id = params.id;
-  const data = Object.fromEntries(await request.formData());
-  let response;
-
-  switch (request.method) {
-    case "PUT":
-      response = await updatePost({ params, request });
-      break;
-    case "DELETE":
-      response = await deletePost({ params });
-      break;
-    default:
-      throw new Error(`Unsupported method: ${request.method}`);
-  }
-
-  if (!response.ok) {
-    throw new Error("Failed to perform the action");
-  }
-
-  return response.json();
-};
