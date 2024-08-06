@@ -9,7 +9,7 @@ export default function Posts() {
   const navigate = useNavigate();
 
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
       {posts &&
         posts.map((post) => (
           <div
@@ -22,7 +22,7 @@ export default function Posts() {
               <p>{post.author}</p>
               <p>{post.create_at.split("T")[0]}</p>
 
-              <div className="flex gap-2 flex-wrap">
+              <div className="flex flex-wrap gap-2">
                 <button
                   className="btn"
                   onClick={() => navigate(`/posts/${post.id}/update`)}
