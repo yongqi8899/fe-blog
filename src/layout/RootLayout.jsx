@@ -11,10 +11,11 @@ export default function RootLayout() {
 
   useEffect(() => {
     const handleEvent = (e) => {
+      let msg = e.detail.msg
       if (e.detail.status === "success") {
-        toast.success(e.details.message);
+        toast.success(msg);
       } else {
-        toast.error(e.details.message);
+        toast.error(msg);
       }
     };
     document.addEventListener("myToaster", handleEvent);

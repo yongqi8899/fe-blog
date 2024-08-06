@@ -1,16 +1,30 @@
 import { redirect } from "react-router-dom";
 
-export const createPost = async ({ request, res }) => {
+const showToastResponse = (res, errorMsg, successMsg) => {
+  if (!res.ok) {
+    const event = new CustomEvent("myToaster", {
+      detail: { status: "error", msg: errorMsg },
+    });
+    document.dispatchEvent(event);
+  } else {
+    const event = new CustomEvent("myToaster", {
+      detail: { status: "success", msg: successMsg },
+    });
+    document.dispatchEvent(event);
+  }
+};
+
+export const createPost = async ({ request }) => {
   const formData = Object.fromEntries(await request.formData());
-  await fetch(`${import.meta.env.VITE_BASE_URL}/posts`, {
+  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/posts`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
     },
     body: JSON.stringify(formData),
   });
-  console.log(res);
- return redirect("/");
+  showToastResponse(res, 'create failed!', 'create success!')
+  return redirect("/");
 };
 
 export const updatePost = async ({ params, request }) => {
@@ -23,7 +37,7 @@ export const updatePost = async ({ params, request }) => {
     },
     body: JSON.stringify(formData),
   });
-  if(!res.ok) throw Error("update Post is not successful")
+  showToastResponse(res, "update failed!", "update success!");
   return redirect(`/posts/${id}`);
 };
 
@@ -35,12 +49,6 @@ export const deletePost = async ({ params }) => {
       "Content-Type": "application/json",
     },
   });
-  if (!res.ok) {
-    const event = new CustomEvent('myToaster', { detail: { status: 'error', msg: 'Deletion failed!' } });
-    document.dispatchEvent(event);
-  } else {
-    const event = new CustomEvent('myToaster', { detail: { status: 'success', msg: 'Deletion worked!' } });
-    document.dispatchEvent(event);
-  }
+  showToastResponse(res, "Deletion failed!", "Deletion success!");
   return redirect("/");
 };
