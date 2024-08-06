@@ -5,10 +5,10 @@ export default function CreateForm() {
   const busy = navigation.state === "submitting";
   return (
     <Form method="POST">
-      <div className="card-body w-96 m-auto">
+      <div className="m-auto card-body w-96">
         <fieldset disabled={busy}>
-          <h2 className="text-xl m-auto bold">Create</h2>
-          <label className="input input-bordered flex items-center gap-2">
+          <h2 className="m-auto text-xl bold">Create</h2>
+          <label className="flex items-center gap-2 input input-bordered">
             Title
             <input
               type="text"
@@ -18,7 +18,7 @@ export default function CreateForm() {
               required
             />
           </label>
-          <label className="input input-bordered flex items-center gap-2">
+          <label className="flex items-center gap-2 input input-bordered">
             Author
             <input
               type="text"
@@ -28,7 +28,7 @@ export default function CreateForm() {
               required
             />
           </label>
-          <label className="input input-bordered flex items-center gap-2">
+          <label className="flex items-center gap-2 input input-bordered">
             Cover
             <input
               type="url"
@@ -50,14 +50,14 @@ export default function CreateForm() {
             />
           </label>
         </fieldset>
-        <div className="card-actions justify-end">
+        <div className="justify-end card-actions">
           <button className="btn" onClick={() => navigate(-1)}>
             Cancel
           </button>
 
           <button
             type="submit"
-            className="btn bg-green-500 hover:bg-green-600"
+            className="bg-green-500 btn hover:bg-green-600"
             disabled={busy}
           >
             {busy ? "Creating..." : "Create"}

@@ -46,7 +46,6 @@ export default function App() {
             </Suspense>
           ),
           action: updatePost,
-          // loader: getOnePost,
         },
         {
           path: "/posts/create",

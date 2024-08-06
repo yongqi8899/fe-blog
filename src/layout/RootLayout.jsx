@@ -9,18 +9,6 @@ import {useToaster} from '../utils/index.js'
 export default function RootLayout() {
   const posts = useLoaderData();
   useToaster()
-  // useEffect(() => {
-  //   const handleEvent = (e) => {
-  //     let msg = e.detail.msg
-  //     if (e.detail.status === "success") {
-  //       toast.success(msg);
-  //     } else {
-  //       toast.error(msg);
-  //     }
-  //   };
-  //   document.addEventListener("myToaster", handleEvent);
-  //   return () => document.removeEventListener("myToaster", handleEvent);
-  // }, []);
 
   return (
     <div>
