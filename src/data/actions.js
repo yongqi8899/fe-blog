@@ -1,18 +1,5 @@
 import { redirect } from "react-router-dom";
-
-const showToastResponse = (res, errorMsg, successMsg) => {
-  if (!res.ok) {
-    const event = new CustomEvent("myToaster", {
-      detail: { status: "error", msg: errorMsg },
-    });
-    document.dispatchEvent(event);
-  } else {
-    const event = new CustomEvent("myToaster", {
-      detail: { status: "success", msg: successMsg },
-    });
-    document.dispatchEvent(event);
-  }
-};
+import { showToast } from "../utils/index";
 
 export const createPost = async ({ request }) => {
   const formData = Object.fromEntries(await request.formData());
@@ -23,7 +10,7 @@ export const createPost = async ({ request }) => {
     },
     body: JSON.stringify(formData),
   });
-  showToastResponse(res, 'create failed!', 'create success!')
+  showToast(res, "create failed!", "create success!");
   return redirect("/");
 };
 
@@ -37,7 +24,7 @@ export const updatePost = async ({ params, request }) => {
     },
     body: JSON.stringify(formData),
   });
-  showToastResponse(res, "update failed!", "update success!");
+  showToast(res, "update failed!", "update success!");
   return redirect(`/posts/${id}`);
 };
 
@@ -49,6 +36,6 @@ export const deletePost = async ({ params }) => {
       "Content-Type": "application/json",
     },
   });
-  showToastResponse(res, "Deletion failed!", "Deletion success!");
+  showToast(res, "Delete failed!", "Delete success!");
   return redirect("/");
 };
